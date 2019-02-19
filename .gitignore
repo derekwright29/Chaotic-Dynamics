@@ -1,0 +1,13 @@
+Choas_Book.pdf
+nonlinear-dynamics-and-chaos-strogatz.pdf
+hw3/mixed*.png
+hw3/Ratio_0*.png
+hw4/*.png
+hw4/hw4_p6/
+hw4/*.png
+hw5/images/
+*/.DS_Store
+*/*.xml
+*/*.iml
+*/.idea
+*.pyc
