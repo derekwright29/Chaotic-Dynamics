@@ -11,3 +11,4 @@ hw5/images/
 */*.iml
 */.idea
 *.pyc
+*~
