@@ -3,11 +3,11 @@ import pylab
 import math
 
 A = 0                #   .8
-beta = 0.25
+beta = 0        #.25
 m = .1
-g = 9.8
+g = 1
 l = .1
-alpha = 0.75 * (math.sqrt(g/l))
+alpha = 0 #0.75 * (math.sqrt(g/l))
 
 Tdotdot = lambda t, T, Tdot: (A*math.cos(alpha*t)-(m*g*math.sin(T))-(beta*l*Tdot))/(m*l)
 Tdot = lambda t, T, Tdot: Tdot
@@ -49,7 +49,7 @@ pend = RK4(Tdot, Tdotdot)
     # .97?
 
 ########    PROBLEM 4   ##############
-# t, y = pend.solve([2, 0], .0001, 2)
+t, y = pend.solve([.01, 0], .01, 5.8)
 # t2, y2 = pend.solve([0, 40], 1*10**-4, 2)
 # t3, y3 = pend.solve([5, -32], 1*10**-4, 2)
 # # t5, y5 = pend.solve([-math.pi+.01, 0], 1*10**-3, 2)
@@ -85,8 +85,8 @@ pend = RK4(Tdot, Tdotdot)
 # y15[0] = [(y15[0][j] - math.pi) % (2*math.pi) for j in range(0, len(y2[0]))]     # mod 2pi
 # y16[0] = [(y16[0][j] - math.pi) % (2*math.pi) for j in range(0, len(y2[0]))]     # mod 2pi
 #
-# pylab.grid()
-# pylab.scatter(y[0], y[1], c='#7F7F7F', lw=0, s=1)
+pylab.grid()
+pylab.scatter(y[0], y[1], c='#7F7F7F', lw=0, s=1)
 # pylab.scatter(y2[0], y2[1], color='blue', lw=0, s=1)
 # pylab.scatter(y3[0], y3[1], color='purple', lw=0, s=1)
 # # pylab.scatter(y5[0], y5[1], color='green', lw=0, s=1)
@@ -99,11 +99,11 @@ pend = RK4(Tdot, Tdotdot)
 # pylab.scatter(y14[0], y14[1], color='yellow', lw=0, s=1)
 # pylab.scatter(y15[0], y15[1], color='teal', lw=0, s=1)
 # pylab.scatter(y16[0], y16[1], color='pink', lw=0, s=1)
-#
-# pylab.xlabel('Theta')
-# pylab.ylabel('omega')
-# # pylab.xlim(-0.5, 6.5)
-# pylab.show()
+
+pylab.xlabel('Theta')
+pylab.ylabel('omega')
+# pylab.xlim(-0.5, 6.5)
+pylab.show()
 
 ####### Problem 6 ###############
 # t, y = pend.solve([2, 0], .0001, 64)
@@ -118,16 +118,16 @@ pend = RK4(Tdot, Tdotdot)
 
 
 ######### PROBLEM 7 ############
-for i in [.0001]:        #  .1, .05, .01, .001, .0001]:
-    t_step = i
-    A = 8.4
-    t, y = pend.solve([2, 0], t_step, 60)
-    print len(y[0]), len(y[1])
-    y[0] = [(y[0][j] - math.pi) % (2*math.pi) for j in range(0, len(y[0]))]     # mod 2pi
-    pylab.grid()
-    pylab.scatter(y[0][450000:], y[1][450000:], c='#3F3F3F', lw=0, s=1)
-    pylab.title('A_value_nT:' + str(A))
-    pylab.xlabel('Theta')
-    pylab.ylabel('omega')
-    pylab.savefig(r'hw4_p6/A_value_nT:' + str(A) + '.png')
-    pylab.close()
+# for i in [.0001]:        #  .1, .05, .01, .001, .0001]:
+#     t_step = i
+#     A = 8.4
+#     t, y = pend.solve([2, 0], t_step, 60)
+#     print len(y[0]), len(y[1])
+#     y[0] = [(y[0][j] - math.pi) % (2*math.pi) for j in range(0, len(y[0]))]     # mod 2pi
+#     pylab.grid()
+#     pylab.scatter(y[0][450000:], y[1][450000:], c='#3F3F3F', lw=0, s=1)
+#     pylab.title('A_value_nT:' + str(A))
+#     pylab.xlabel('Theta')
+#     pylab.ylabel('omega')
+#     pylab.savefig(r'hw4_p6/A_value_nT:' + str(A) + '.png')
+#     pylab.close()

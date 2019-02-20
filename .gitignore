@@ -12,3 +12,4 @@ hw5/images/
 */.idea
 *.pyc
 *~
+.DS_Store
