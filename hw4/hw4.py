@@ -5,7 +5,7 @@ import math
 A = 0                #   .8
 beta = 0        #.25
 m = .1
-g = 1
+g = 9.8
 l = .1
 alpha = 0 #0.75 * (math.sqrt(g/l))
 
@@ -14,6 +14,13 @@ Tdot = lambda t, T, Tdot: Tdot
 
 pend = RK4(Tdot, Tdotdot)
 
+
+t,y = pend.solve([0.01, 0], 10**-5, .6365)
+# pylab.grid()
+# pylab.scatter(y[0], y[1], lw=0, s=1,c='#7F7F7F')
+# pylab.xlabel('Theta')
+# pylab.ylabel('omega')
+# pylab.show()
 
 ####### TODO: Make MUCH more modular. Pass in I.C.s, shift, modulo, plot them###########
 # init_conds = [ [2,0],
@@ -49,7 +56,7 @@ pend = RK4(Tdot, Tdotdot)
     # .97?
 
 ########    PROBLEM 4   ##############
-t, y = pend.solve([.01, 0], .01, 5.8)
+# t, y = pend.solve([.01, 0], .01, 5.8)
 # t2, y2 = pend.solve([0, 40], 1*10**-4, 2)
 # t3, y3 = pend.solve([5, -32], 1*10**-4, 2)
 # # t5, y5 = pend.solve([-math.pi+.01, 0], 1*10**-3, 2)
