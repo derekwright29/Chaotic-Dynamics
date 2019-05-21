@@ -19,10 +19,11 @@ def logistic_c(x0, R, m):
             xn_2.append(next_state)
         cur_state = next_state
 
-    plt.scatter(xn, xn_2)
+    plt.grid(True)
+    plt.scatter(xn, xn_2, s=20,lw=0)
     plt.title("X0 = " + str(x0) + "; R = " + str(R) + "; m = " + str(m))
     plt.xlabel("x_n")
     plt.ylabel("x_n+2")
-    plt.grid(True)
+
 
     return xn_2, xn

@@ -15,7 +15,7 @@ Tdot = lambda t, T, Tdot: Tdot
 pend = RK4(Tdot, Tdotdot)
 
 
-t,y = pend.solve([0.01, 0], 10**-5, .6365)
+#t,y = pend.solve([0.01, 0], 10**-5, .6365)
 # pylab.grid()
 # pylab.scatter(y[0], y[1], lw=0, s=1,c='#7F7F7F')
 # pylab.xlabel('Theta')
@@ -23,15 +23,44 @@ t,y = pend.solve([0.01, 0], 10**-5, .6365)
 # pylab.show()
 
 ####### TODO: Make MUCH more modular. Pass in I.C.s, shift, modulo, plot them###########
-# init_conds = [ [2,0],
-#                [0,40],
-#                [5,-40],
-#
-#
-#
-#
-# ]
-#
+init_conds = [ [0.1,0],
+               [2,0],
+               [-10,5],
+               [-10,10],
+               [-10,40],
+               [10,-40],
+                [5,0],
+               [-5,0],
+               [-10,20],
+               [-2*math.pi+.2,0],
+[-2*math.pi-.5,0],
+[2*math.pi+.7,0],
+[2*math.pi+.2,0],
+               [-8.5,0],
+               [-3*math.pi+.3, 0],
+                [-math.pi+.1, 0],
+                [3*math.pi-.5, 0],
+               [1,0],
+               [-1,0],
+               [10,-5],
+               [10,-8],
+[10,-15],
+[10,-28],
+               [-10,30]
+
+]
+
+###### PROBLEM 3 #######
+pylab.grid()
+pylab.rc('axes', axisbelow=True)
+for i in init_conds:
+    t, y = pend.solve(i, 1 * 10 ** -4, 2)
+    pylab.scatter(y[0],y[1],lw=0,s=1)
+
+pylab.xlabel('Theta')
+pylab.ylabel('omega')
+pylab.xlim(-10, 10)
+pylab.show()
 
 # ######### PROBLEM 6 ########
 # for i in [.92]:
@@ -56,19 +85,19 @@ t,y = pend.solve([0.01, 0], 10**-5, .6365)
     # .97?
 
 ########    PROBLEM 4   ##############
-# t, y = pend.solve([.01, 0], .01, 5.8)
-# t2, y2 = pend.solve([0, 40], 1*10**-4, 2)
-# t3, y3 = pend.solve([5, -32], 1*10**-4, 2)
-# # t5, y5 = pend.solve([-math.pi+.01, 0], 1*10**-3, 2)
+# t, y = pend.solve([.01, 0], .1*10**-4, 2)
+# t2, y2 = pend.solve([0, 30], 1*10**-4, 2)
+# t3, y3 = pend.solve([9, -22], 1*10**-4, 2)
+# t5, y5 = pend.solve([-math.pi+.01, 0], 1*10**-4, 2)
 # t6, y6 = pend.solve([9.2, -1.5], 1*10**-4, 2)
 # t7, y7 = pend.solve([3, 10], 1*10**-4, 2)
-# t8, y8 = pend.solve([math.pi+.01, 1.5], 1*10**-4, 2)
-# t10, y10 = pend.solve([-math.pi-.01, 7], 1*10**-4, 2)
+# t8, y8 = pend.solve([math.pi+.01, 0], 1*10**-4, 2)
+# t10, y10 = pend.solve([-math.pi-.01, 0], 1*10**-4, 2)
 # t11, y11 = pend.solve([-9, 21], 1*10**-4, 2)
 # t12, y12 = pend.solve([9, -21], 1*10**-4, 2)
 # t13, y13 = pend.solve([10, -40], 1*10**-4, 2)
 # t14, y14 = pend.solve([-10, 40], 1*10**-4, 2)
-# t15, y15 = pend.solve([0, -40], 1*10**-4, 2)
+# t15, y15 = pend.solve([0, -15], 1*10**-4, 2)
 # t16, y16 = pend.solve([math.pi-.01, -2.3], 1*10**-4, 2)
 
 
@@ -92,8 +121,8 @@ t,y = pend.solve([0.01, 0], 10**-5, .6365)
 # y15[0] = [(y15[0][j] - math.pi) % (2*math.pi) for j in range(0, len(y2[0]))]     # mod 2pi
 # y16[0] = [(y16[0][j] - math.pi) % (2*math.pi) for j in range(0, len(y2[0]))]     # mod 2pi
 #
-pylab.grid()
-pylab.scatter(y[0], y[1], c='#7F7F7F', lw=0, s=1)
+# pylab.grid()
+# pylab.scatter(y[0], y[1], c='#7F7F7F', lw=0, s=1)
 # pylab.scatter(y2[0], y2[1], color='blue', lw=0, s=1)
 # pylab.scatter(y3[0], y3[1], color='purple', lw=0, s=1)
 # # pylab.scatter(y5[0], y5[1], color='green', lw=0, s=1)
@@ -106,11 +135,11 @@ pylab.scatter(y[0], y[1], c='#7F7F7F', lw=0, s=1)
 # pylab.scatter(y14[0], y14[1], color='yellow', lw=0, s=1)
 # pylab.scatter(y15[0], y15[1], color='teal', lw=0, s=1)
 # pylab.scatter(y16[0], y16[1], color='pink', lw=0, s=1)
-
-pylab.xlabel('Theta')
-pylab.ylabel('omega')
-# pylab.xlim(-0.5, 6.5)
-pylab.show()
+#
+# pylab.xlabel('Theta')
+# pylab.ylabel('omega')
+# pylab.xlim(-10, 10)
+# pylab.show()
 
 ####### Problem 6 ###############
 # t, y = pend.solve([2, 0], .0001, 64)

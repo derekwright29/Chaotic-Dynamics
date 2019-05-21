@@ -15,11 +15,12 @@ def logistic_a(x0, R, m):
         xn.append(next_state)
         cur_state = next_state
 
-    plt.scatter(n, xn)
+    plt.grid(True)
+    plt.scatter(n, xn, s=10, lw=0)
     plt.title("X0 = " + str(x0) + "; R = " + str(R) + "; m = " + str(m))
     plt.xlabel("n")
     plt.ylabel("xn")
-    plt.grid(True)
+
 
     return xn, n
 

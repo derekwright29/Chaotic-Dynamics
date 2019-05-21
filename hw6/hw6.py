@@ -98,6 +98,8 @@ for n in range(int(math.floor((runlength+1)/bigT))):
             poinEvals[1].append(theta[1][i-1])
 print "Poins: ", len(poinEvals[0])
 
+# poinEvals[0] = [poinEvals[0][i] % (2*math.pi) for i in range (poinEvals[0])]
+
 pylab.scatter(poinEvals[0], poinEvals[1], s=5, lw=0)
 pylab.xlabel('theta')
 pylab.xlim(-.014,.014)

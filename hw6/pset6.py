@@ -78,49 +78,59 @@ thetaDot = lambda t, theta, thetaDot: thetaDot
 
 pend = RK4(thetaDot, thetaDotDot)
 
-poinEvals = [[],[]]
+
 bigT = (2*math.pi/alpha)
 runlength = 850
 
-t, theta = pend.solve([.01,0], 1*10**-3, runlength)
-print len(t)
 
-# f = [s % bigT for s in t]
+steps = [.02, .017, .01, .0045, .00425, .004277]
 
-# # # Old shit boi
-# for n in range(int(math.floor((runlength+1)/bigT))):
-#     for i in range(len(t)):
-#         if ((t[i-1] < n*bigT) and (n*bigT < t[i])):
-#             poinEvals[0].append(theta[0][i-1])
-#             poinEvals[1].append(theta[1][i-1])
+for j in steps:
+    print j
+    poinEvals = [[], []]
+    pend.reset()
+    t, theta = pend.solve([.01,0], j, runlength)
+    print len(t)
 
+    # f = [s % bigT for s in t]
 
-# Old shit boi
-for n in range(int(math.floor((runlength+1)/bigT))):
-    for i in range(len(t)):
-        if ((t[i-1] < n*bigT) and (n*bigT < t[i])):
-            poinEvals[0].append((theta[0][i-1]+theta[0][i])/2)      # linear interpolation
-            poinEvals[1].append((theta[1][i-1]+theta[1][i])/2)
+    # # Old shit boi
+    # for n in range(int(math.floor((runlength+1)/bigT))):
+    #     for i in range(len(t)):
+    #         if ((t[i-1] < n*bigT) and (n*bigT < t[i])):
+    #             poinEvals[0].append(theta[0][i-1])
+    #             poinEvals[1].append(theta[1][i-1])
 
-print "Poins:", len(poinEvals[0])
-print poinEvals[0]
-print poinEvals[1]
+    #
+    # # Old shit boi
+    for n in range(int(math.floor((runlength+1)/bigT))):
+        for i in range(len(t)):
+            if ((t[i-1] < n*bigT) and (n*bigT < t[i])):
+                poinEvals[0].append((theta[0][i-1]+theta[0][i])/2)      # linear interpolation
+                poinEvals[1].append((theta[1][i-1]+theta[1][i])/2)
 
-# # New unshit boi
-# for i in range(len(f)):
-#     if ((f[i-1] < bigT) and (bigT< f[i])):
-#         poinEvals[0].append(theta[0][i-1])
-#         poinEvals[1].append(theta[1][i-1])
+    print "Poins:", len(poinEvals[0])
+    print poinEvals[0]
+    print poinEvals[1]
 
-# pend.reset()
+    # # New unshit boi
+    # for i in range(len(f)):
+    #     if ((f[i-1] < bigT) and (bigT< f[i])):
+    #         poinEvals[0].append(theta[0][i-1])
+    #         poinEvals[1].append(theta[1][i-1])
 
+    # pend.reset()
 
-pylab.scatter(poinEvals[0], poinEvals[1], s=5, lw=0)
-pylab.xlabel('theta')
-pylab.ylabel('omega')
-pylab.title('Chaotic Poincare Section w/ Lin Interpolation')
-pylab.savefig("test2a_001_linint.png", dpi=300)
-pylab.show()
+    # mod 2pi
+    poinEvals[0] = [poinEvals[0][k] % (2*math.pi) for k in range(len(poinEvals[0]))]
+
+    pylab.scatter(poinEvals[0], poinEvals[1], s=5, lw=0)
+    pylab.xlabel('theta')
+    pylab.ylabel('omega')
+    pylab.title('Chaotic Poincare Section w/ Lin Interpolation: ' + str(j))
+    pylab.savefig("mod2a_" + str(j) + "_linint.png", dpi=300)
+    pylab.show()
+    # pylab.close()
 
 
 

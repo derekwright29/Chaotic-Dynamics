@@ -17,10 +17,11 @@ def logistic_b(x0, R, m):
         xn_1.append(next_state)
         cur_state = next_state
 
-    plt.scatter(xn, xn_1)
+    plt.grid(True)
+    plt.scatter(xn, xn_1, s=10,lw=0)
     plt.title("X0 = " + str(x0) + "; R = " + str(R) + "; m = " + str(m))
     plt.xlabel("x_n")
     plt.ylabel("x_n+1")
-    plt.grid(True)
+
 
     return xn_1, xn

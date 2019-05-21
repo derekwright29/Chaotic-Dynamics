@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 
 def test_helper(x0, R, m):
     # Part a
+    plt.rc('axes', axisbelow=True)
     plt.figure(1)
     states, time = la(x0, R, m)
     print states, time
@@ -21,22 +22,10 @@ def test_helper(x0, R, m):
     print states, next2states
     plt.show()
 
+m = 500
+arr = [
 
-arr = [(.2, 2, 6),
-       (.01, 2, 10),
-       (.99, 2, 10),
-       (.200001, 2, 7),
-       (.2, 3.3, 6),
-       (.2, 3.6, 12),
-       (.2, 3.83, 12),
-       (.200001, 3.83, 14),
-       (.2, 3.9, 14),
-       (.2, 4.1, 14),
-       (.5, 3, 12),
-       (.2, 2.5, 12),
-       (.200001, 2.5, 12),
-       (.5, 2.5, 12),
-       (.7, 2.5, 14)]
+(.5, 3.5, m)]
 
 
 for i in arr:
